@@ -1,0 +1,9 @@
+/* 
+Workshop 1 part 2
+Name : Inae Kim 
+Seneca ID : 132329202
+Seneca email : ikim36@myseneca.ca
+Date : 2021/05/30
+
+*/
+This workshop was about modular programming and the use of pointers and arrays. In part 1, I had to divide one set of codes(w1p1.cpp) into several different modules depending on its functionalities. So what I did was creating multiple header files naming them based on what they did, and source(implementation) files. In header files, I included function prototypes, macros(only the ones that were used in the files), and In source files, I included the definition of the functions, global variables, etc. In part 1, I learned how modular programming should be done and how the compilation is completed when there are divided files of codes. In part 2, I had to create string functions which were strcpy, strncpy, strcmp, strncmp, strlen, strstr and strcat. The implementation of these functions required an understanding of pointers and arrays since character string is an array of char and often represented as the pointer of the char array. Through this workshop, I learned how string functions work inside the computer which is passing char pointers as parameters and use them to search, compare, copy, count or concatenate the strings. The one that was difficult to implement was strstr function, which receives a const char pointer of string and a char pointer as parameters and returns either NULL or the address of the first occurrence of a string with the second string. It was difficult because the function should include two loops, which are the one that searches for the first letter that is in common between two string arrays, and the other one that looks for the next letters in common compared with the second string. 
