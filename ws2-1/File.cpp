@@ -6,7 +6,7 @@ namespace sdds {
    FILE* fptr;
    bool openFile(const char filename[]) {
       fptr = fopen(filename, "r");
-      return fptr != NULL;
+      return fptr != nullptr;
    }
    int noOfRecords() {
       int noOfRecs = 0;

@@ -34,8 +34,7 @@ namespace sdds {
       int number = 0;
       double salary = 0;
 
-      if (openFile(DATAFILE))
-      {
+
           if (read(number) && read(salary)  && read(name))
           {
               employ.m_empNo = number;
@@ -47,8 +46,8 @@ namespace sdds {
              
           }
           
-      }
-      closeFile();
+
+
       /* if reading of employee number, salay and name are successful
               allocate memory to the size of the name + 1
               and keep its address in the name of the Employee Reference
@@ -85,7 +84,7 @@ namespace sdds {
 
           noOfEmployees = noOfRecords(); //get the number of records (employees) from the file (use function(s) from File module) and store it into the global variable
            employees = new Employee[noOfEmployees]; //create a dynamically allocated array of Employee;
-           Employee employee = { 0 };
+           Employee employee = { };
           //store its address into the global variable
        
               for (int i = 0; i < noOfEmployees; i++)
