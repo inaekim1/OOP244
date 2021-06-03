@@ -71,7 +71,6 @@ namespace sdds {
    // TODO: Finish the implementation of the 0 arg load function 
    bool load() {
       bool ok = false;
-      int i = 0;
       if (openFile(DATAFILE)) {
          /* 
           Set the noOfEmployees to the number of recoreds in the file.
