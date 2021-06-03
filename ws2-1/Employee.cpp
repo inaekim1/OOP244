@@ -1,3 +1,12 @@
+/* Workshop 2 part 2
+Name : Inae Kim
+Seneca ID : 132329202
+Seneca email : ikim36@myseneca.ca
+Date : 2021/06/02
+
+*/
+// I have done all the coding by myself and only copied the code that my professor provided to complete my workshops and assignments.
+
 #define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include "cstring.h"  // implemented in workshop 1 part 2 (DIY)
@@ -85,7 +94,7 @@ namespace sdds {
           noOfEmployees = noOfRecords(); //get the number of records (employees) from the file (use function(s) from File module) and store it into the global variable
            employees = new Employee[noOfEmployees]; //create a dynamically allocated array of Employee;
            Employee employee = { };
-          //store its address into the global variable
+                
        
               for (int i = 0; i < noOfEmployees; i++)
               {

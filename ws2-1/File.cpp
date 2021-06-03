@@ -1,3 +1,12 @@
+/* Workshop 2 part 2
+Name : Inae Kim
+Seneca ID : 132329202
+Seneca email : ikim36@myseneca.ca
+Date : 2021/06/02
+
+*/
+// I have done all the coding by myself and only copied the code that my professor provided to complete my workshops and assignments.
+
 #define _CRT_SECURE_NO_WARNINGS
 #include <cstdio>
 #include "File.h"
@@ -20,17 +29,7 @@ namespace sdds {
    void closeFile() {
       if (fptr) fclose(fptr);
    }
-   /* TODO: read functions go here    
-   bool read(................) {
-      return .....
-   }
-   bool read(................) {
-      return .....
-   }
-   bool read(................) {
-      return .....
-   }
-   */
+
    bool read(char* employee_name)
    {
        bool ret = false;
