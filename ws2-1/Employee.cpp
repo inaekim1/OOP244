@@ -9,7 +9,7 @@ Date : 2021/06/02
 
 #define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
-#include <crtdbg.h>
+//#include <crtdbg.h>
 #include "cstring.h"  // implemented in workshop 1 part 2 (DIY)
 #include "Employee.h"
 #include "File.h"
@@ -137,15 +137,16 @@ namespace sdds {
    // TODO: Implementation for the deallocateMemory function goes here
    void deallocateMemory()
    {
-     
-       for (int i = 0; i < noOfEmployees; i++)
+      // 568 bytes in 1 blocks
+  for (int i = 0; i < noOfEmployees; i++)
        {
            delete[] employees[i].m_name;
-           
-       }
-       delete employees;
 
-       _CrtDumpMemoryLeaks();
+       }
+       delete[] employees;
+     
+
+       /*_CrtDumpMemoryLeaks();*/
        
      
    }
