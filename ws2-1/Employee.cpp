@@ -9,6 +9,7 @@ Date : 2021/06/02
 
 #define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
+#include <crtdbg.h>
 #include "cstring.h"  // implemented in workshop 1 part 2 (DIY)
 #include "Employee.h"
 #include "File.h"
@@ -92,13 +93,13 @@ namespace sdds {
 
           noOfEmployees = noOfRecords(); //get the number of records (employees) from the file (use function(s) from File module) and store it into the global variable
            employees = new Employee[noOfEmployees]; //create a dynamically allocated array of Employee;
-           Employee employee = { };
+          /* Employee employee = { };*/
                 
        
               for (int i = 0; i < noOfEmployees; i++)
               {
-                  load(employee);
-                  employees[i] = employee;
+                  load(employees[i]);
+                /*  employees[i] = employee;*/
  
               }
 
@@ -139,12 +140,13 @@ namespace sdds {
      
        for (int i = 0; i < noOfEmployees; i++)
        {
-           delete employees[i].m_name;
+           delete[] employees[i].m_name;
+           
        }
        delete employees;
 
+       _CrtDumpMemoryLeaks();
        
-       employees = nullptr;
      
    }
 
