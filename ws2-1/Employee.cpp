@@ -33,7 +33,7 @@ namespace sdds {
          }
       }
    }
-
+  
    // TODO: Finish the implementation of the 1 arg load function which
    // reads one employee record from the file and loads it into the employee reference
    // argument
@@ -50,11 +50,11 @@ namespace sdds {
               employ.m_salary = salary;
               employ.m_name = new char[strLen(name) + 1];
               strCpy(employ.m_name, name);
-
+             
               ok = true;
              
           }
-          
+        
 
 
       /* if reading of employee number, salay and name are successful
@@ -136,8 +136,16 @@ namespace sdds {
    // TODO: Implementation for the deallocateMemory function goes here
    void deallocateMemory()
    {
-       delete[] employees;
-      
+     
+       for (int i = 0; i < noOfEmployees; i++)
+       {
+           delete employees[i].m_name;
+       }
+       delete employees;
+
+       
+       employees = nullptr;
+     
    }
 
 
