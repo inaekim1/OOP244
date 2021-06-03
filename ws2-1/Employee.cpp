@@ -55,7 +55,7 @@ namespace sdds {
               ok = true;
              
           }
-        
+          
 
 
       /* if reading of employee number, salay and name are successful
@@ -104,6 +104,7 @@ namespace sdds {
               }
 
           ok = true;
+          closeFile();
       }
       else {
          cout << "Could not open data file: " << DATAFILE<< endl;
