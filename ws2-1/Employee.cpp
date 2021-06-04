@@ -20,7 +20,6 @@ namespace sdds {
    Employee* employees;
 
 
-
    void sort() {
       int i, j;
       Employee temp;

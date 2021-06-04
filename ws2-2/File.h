@@ -4,6 +4,9 @@ namespace sdds {
    bool openFile(const char filename[]);
    void closeFile();
    int noOfRecords();
+   bool read(char* postal_code);
+   bool read(int& population);
+
 
 }
 #endif // !SDDS_FILE_H_
