@@ -9,9 +9,10 @@ namespace sdds {
         int population;
 
     };
+    void sort();
     bool load(Population&);
     bool load(const char *filename);
-    void display(const Population& pops);
+    void display(const Population&);
     void display();
     void deallocateMemory();
 

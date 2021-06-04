@@ -5,22 +5,24 @@
 namespace sdds
 {
     FILE* fptr;
+
+
     bool openFile(const char filename[])
     {
         fptr = fopen(filename, "r");
         return fptr != NULL;
     }
-    //int noOfRecords()
-    //{
-    //    int noOfRecs = 0;
-    //    char ch;
-    //    while (fscanf(fptr, "%c", &ch) == 1)
-    //    {
-    //        noOfRecs += (ch == '\n');
-    //    }
-    //    rewind(fptr);
-    //    return noOfRecs;
-    //}
+    int noOfRecords()
+    {
+        int noOfRecs = 0;
+        char ch;
+        while (fscanf(fptr, "%c", &ch) == 1)
+        {
+            noOfRecs += (ch == '\n');
+        }
+        rewind(fptr);
+        return noOfRecs;
+    }
     void closeFile()
     {
         if (fptr) fclose(fptr);
@@ -29,7 +31,7 @@ namespace sdds
     {
         bool ret = false;
 
-        if (fscanf(fptr, "%[^\n]\n", postal_code) == 1)
+        if (fscanf(fptr, "%[^ ,],", postal_code) == 1)
         {
             ret = true;
         }
@@ -38,8 +40,8 @@ namespace sdds
     bool read(int& population)
     {
         bool ret = false;
-
-        if (fscanf(fptr, "%d,", &population) == 1)
+        /*char ch = '\n';*/
+        if (fscanf(fptr, "%d\n", &population ) == 1)
         {
             ret = true;
         }

@@ -10,6 +10,25 @@ namespace sdds {
     int numOfpop = 0;
     Population* pops;
 
+    void sort()
+    {
+        int i, j;
+        Population temp;
+        for (i = numOfpop - 1; i > 0; i--)
+        {
+            for (j = 0; j < i; j++)
+            {
+                if (pops[j].population > pops[j + 1].population)
+                {
+                    temp = pops[j];
+                    pops[j] = pops[j + 1];
+                    pops[j + 1] = temp;
+                }
+            }
+        }
+    }
+
+
     bool load(Population& pop)
     {
         bool ok = false;
@@ -34,10 +53,11 @@ namespace sdds {
         bool ret = false;
        /* int count = 0;*/
 
-        numOfpop = noOfRecords();
-        pops = new Population[numOfpop];
+       
         if (openFile(filename))
         {
+            numOfpop = noOfRecords();
+            pops = new Population[numOfpop];
             for (int i = 0; i < numOfpop; i++)
             {
                 load(pops[i]);
@@ -67,7 +87,7 @@ namespace sdds {
     void display(const Population& pops)
     {
 
-        cout << pops.postal_code << ":" << "   " << pops.population << endl;
+        cout << pops.postal_code << ":   " << pops.population <<endl;
 
     }
     
@@ -76,7 +96,8 @@ namespace sdds {
         int countPop = 0;
         cout << "Postal Code: population" << endl;
         cout << "-------------------------" << endl;
-        for (int i = 0; i < 14; i++)
+        sort();
+        for (int i = 0; i < numOfpop; i++)
         {
             cout << i+1 << "- ";
             display(pops[i]);
@@ -91,7 +112,7 @@ namespace sdds {
 
     void deallocateMemory()
     {
-        for (int i = 0; i < noOfRecords(); i++)
+        for (int i = 0; i < numOfpop; i++)
         {
             delete[] pops[i].postal_code;
             pops[i].postal_code = nullptr;
