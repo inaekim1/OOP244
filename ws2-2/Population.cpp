@@ -6,7 +6,7 @@ Date : 2021/06/05
 Section : OOP244 NBB
 */
 // I have done all the coding by myself and only copied the code that my professor provided to complete my workshops and assignments.
-//second submission : commented codes are deleted
+//second submission : commented codes are deleted, reflection fixed
 
 #define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
