@@ -1,3 +1,13 @@
+/* Workshop 2 part 2
+Name : Inae Kim
+Seneca ID : 132329202
+Seneca email : ikim36@myseneca.ca
+Date : 2021/06/05
+Section : OOP244 NBB
+*/
+// I have done all the coding by myself and only copied the code that my professor provided to complete my workshops and assignments.
+//second submission : commented codes are deleted
+
 #define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include "cstring.h"
@@ -51,19 +61,17 @@ namespace sdds {
     bool load(const char *filename)
     {
         bool ret = false;
-       /* int count = 0;*/
+       
 
        
         if (openFile(filename))
         {
             numOfpop = noOfRecords();
             pops = new Population[numOfpop];
-            for (int i = 0; i < numOfpop; i++)
-            {
-                load(pops[i]);
-            }
+            int count = 0;
+       
             ret = true;
-           /* while (load(pops[count]))
+            while (load(pops[count]))
             {
                 count++;
             }
@@ -74,20 +82,20 @@ namespace sdds {
             else
             {
                 cout << "Error: incorrect number of records read; the data is possibly corrupted! " << endl;
-            }*/
+            }
             closeFile();
         }
         else
         {
             cout << "Could not open data file : " << filename << endl;
         }
-        /*closeFile();*/
+        
         return ret;
     }
     void display(const Population& pops)
     {
 
-        cout << pops.postal_code << ":   " << pops.population <<endl;
+        cout << pops.postal_code << ":  " << pops.population <<endl;
 
     }
     
