@@ -6,23 +6,34 @@ namespace sdds {
 
     double Bill::totalTax()const
     {
-        int count = 0; 
+        /*int count = 0; */
         double totaltax = 0.0;
-        while (m_items[count].isValid())
+      /*  while (m_items[count].isValid())
         {
             totaltax += m_items[count].tax();
             count++;
+        }*/
+        for (int i = 0; i < m_noOfItems; i++)
+        {
+            totaltax += m_items[i].tax();
+            
         }
         return totaltax;
     }
     double Bill::totalPrice()const
     {
-        int count = 0;
+        
         double totalprice = 0.0;
+        /*int count = 0;
         while (m_items[count].isValid())
         {
             totalprice += m_items[count].price();
             count++;
+        }*/
+        for (int i = 0; i < m_noOfItems; i++)
+        {
+            totalprice += m_items[i].price();
+
         }
         return totalprice;
     }
@@ -30,7 +41,10 @@ namespace sdds {
     {
         cout << "+--------------------------------------+" << endl;
         cout << "| ";
-        if (isValid())
+        cout.width(36);
+        cout.fill(' ');
+        cout.setf(ios::left);
+        if (m_items->isValid())
         {
             cout << m_title;
         }
@@ -38,27 +52,57 @@ namespace sdds {
         {
             cout << "Invalid Bill";
         }
-        for (int i = 0; i < 36 - strLen(m_title); i++)
-        {
-            cout << " ";
-        }
         cout << " |" << endl;
-        
         cout << "+----------------------+---------+-----+" << endl;
-        cout << "| " << "Item Name";
-        for (int i = 0; i < 12; i++)
-        {
-            cout << " ";
-        }
-        cout << "| " << "Price   | Tax |" << endl;
+        cout << "| ";
+        cout.width(20);
+        cout.fill(' ');
+        cout << "Item Name";
+        cout << " |";
+        cout.width(6);
+        cout.fill(' ');
+        cout << " Price";
+        cout << "   +" <<" Tax" << " |" << endl;
         cout << "+----------------------+---------+-----+" << endl;
+        cout.unsetf(ios::left);
     }
     void Bill::footer()const
     {
         cout << "+----------------------+---------+-----+" << endl;
-        cout << " |              Total Tax:       " << totalTax() << " |" << endl;
-        cout << " |            Total Price:       " << totalPrice() << " |" << endl;
-        cout << " |          Total After Tax:      " << totalPrice() + totalTax() << " |" << endl;
+        if (isValid())
+        {
+            cout << "| ";
+            cout.width(30);
+            cout.fill(' ');
+            cout.setf(ios::right);
+            cout << "Total Tax :";
+
+            cout.width(6);
+            cout.setf(ios::right);
+            cout << totalTax();
+            cout << " |" << endl;
+
+            cout << "| ";
+            cout.width(24);
+            cout.setf(ios::right);
+            cout << "Total Price :";
+            cout << totalPrice() << " |" << endl;
+
+            cout << "| ";
+            cout.width(10);
+            cout.setf(ios::right);
+            cout << "Total After Tax:" << totalPrice() + totalTax() << " |" << endl;
+
+        }
+        else
+        {
+            cout << "| ";
+            cout << "Invalid Bill";
+            cout.width(36);
+            cout.fill(' ');
+            cout << " |";
+        }
+       
         cout << "+--------------------------------------+" << endl;
     }
     void Bill::setEmpty()
@@ -94,6 +138,10 @@ namespace sdds {
         m_itemsAdded = 0;
         strCpy(m_title, title);
         m_items = new Item[m_noOfItems];
+        for (int  i = 0; i < m_noOfItems; i++)
+        {
+            m_items[i].setEmpty();
+        }
 
     }
     bool Bill::add(const char* item_name, double price, bool taxed)
@@ -120,11 +168,9 @@ namespace sdds {
     }
     void Bill::deallocate()
     {
-        
         delete[] m_items;
-    
         
-    }
 
+    }
 
 }
