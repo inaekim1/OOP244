@@ -27,31 +27,34 @@ namespace sdds {
     void Item::display()const
     {
        
-        cout << right << "| ";
+        cout << "| ";
         if (isValid())
         {
+           cout.width(20);
+           cout.fill('.');
+           cout.setf(ios::left);
             cout << m_itemName;
-            for (int i = 0; i < 20 -strLen(m_itemName); i++)
-            {
-                cout << ".";
-            }
+            cout.fill(' ');
+            cout.unsetf(ios::left);
+            //for (int i = 0; i < 20 -strLen(m_itemName); i++)
+            //{
+            //    cout << ".";
+            //}
         }
         else
         {
-            for (int i = 0; i < 20; i++)
-            {
-                cout << "x";
-            }
-
+           cout.width(20);
+           cout.fill('x');
+           cout << 'x';
         }
         
-          cout << left << " |";
+          cout  << " |";
           for (int i = 0; i < 4; i++)
           {
               cout << " ";
           }
           cout << price();
-          cout << left << " |";
+          cout  << " |";
           if (tax() != 0.0)
           {
               cout << "Yes";
