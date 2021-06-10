@@ -98,15 +98,11 @@ namespace sdds {
     }
     bool Bill::add(const char* item_name, double price, bool taxed)
     {
-        int count = 0;
         bool ret = false;
-        while (m_items[count].isValid())
+
+        if (m_itemsAdded < m_noOfItems )
         {
-            count++;
-        }
-        if (m_itemsAdded < count )
-        {
-            m_items->set(item_name, price, taxed);
+            m_items[m_itemsAdded].set(item_name, price, taxed);
             m_itemsAdded++;
             ret = true;
         }
