@@ -44,7 +44,6 @@ namespace sdds {
             }
 
         }
-        
           cout << left << " |";
           for (int i = 0; i < 4; i++)
           {
@@ -66,7 +65,7 @@ namespace sdds {
     bool Item::isValid()const
     {
         bool ret = false;
-        if (m_price > 0.0 && m_itemName[0] != 0)
+        if (price() != 0.0 && m_itemName[0] != 0)
         {
             ret = true;
         }
