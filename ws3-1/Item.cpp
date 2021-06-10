@@ -6,19 +6,20 @@ using namespace std;
 namespace sdds {
     void Item::setName(const char* name)
     {
-        name = m_itemName;
+        strnCpy(m_itemName, name, 20);
     }
     void Item::setEmpty()
     {
+        /*Sets the Item to a recognizable safe Empty State. Do this by setting the price to an impossible value like 0.0 and setting the m_itemName to a blank string (first character set to null).*/
         m_price = 0.0;
         m_itemName[0] = '\0';
     }
     void Item::set(const char* name, double price, bool taxed)
     {
-        strCpy(m_itemName, name);
+        setName(name);
         m_price = price;
         m_taxed = taxed;
-        if (m_price < 0 || m_itemName == nullptr)
+        if (price < 0 || name == NULL )
         {
             setEmpty();
         }
@@ -32,29 +33,26 @@ namespace sdds {
             cout << m_itemName;
             for (int i = 0; i < 20 -strLen(m_itemName); i++)
             {
-
                 cout << ".";
-
             }
         }
         else
         {
             for (int i = 0; i < 20; i++)
             {
-
                 cout << "x";
-
             }
 
         }
         
           cout << left << " |";
-          for (int i = 0; i < 7; i++)
+          for (int i = 0; i < 4; i++)
           {
               cout << " ";
           }
-          cout << left << " | ";
-          if (m_taxed)
+          cout << price();
+          cout << left << " |";
+          if (tax() != 0.0)
           {
               cout << "Yes";
           }
@@ -68,7 +66,7 @@ namespace sdds {
     bool Item::isValid()const
     {
         bool ret = false;
-        if (m_price != 0.0 && m_itemName[0] != 0)
+        if (m_price > 0.0 && m_itemName[0] != 0)
         {
             ret = true;
         }
@@ -83,6 +81,5 @@ namespace sdds {
         double taxed = m_price * 0.13;
         return m_taxed == true ? taxed : 0.0;
     }
-
 
 }

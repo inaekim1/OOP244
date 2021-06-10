@@ -70,7 +70,7 @@ namespace sdds {
     {
         bool ret = false;
         int found = -1;
-        int count = 0;
+       
         if (m_title[0] != '\0' && m_items != nullptr)
         {
             for (int i = 0; i < m_noOfItems; i++)
