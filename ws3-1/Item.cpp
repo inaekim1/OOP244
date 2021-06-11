@@ -52,6 +52,8 @@ namespace sdds {
             cout << " | ";
             cout.width(7);
             cout.fill(' ');
+            cout.setf(ios::fixed);
+            cout.precision(2);
             cout << price();
             cout << " | ";
             if (m_taxed)

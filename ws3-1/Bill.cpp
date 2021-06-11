@@ -7,7 +7,6 @@ Date : 2021/06/02
 */
 // I have done all the coding by myself and only copied the code that my professor provided to complete my workshops and assignments.
 #include <iostream>
-#include <iomanip>
 #include "cstring.h"
 #include "Bill.h"
 using namespace std;
@@ -74,7 +73,9 @@ namespace sdds {
             cout << "Total Tax: ";
             cout.width(10);
             cout.setf(ios::right);
-            cout << fixed << setprecision(2) << totalTax();
+            cout.setf(ios::fixed);
+            cout.precision(2);
+            cout  << totalTax();
             cout << " |" << endl;
 
             cout << "| ";
@@ -83,7 +84,9 @@ namespace sdds {
             cout << "Total Price: ";
             cout.width(10);
             cout.setf(ios::right);
-            cout << fixed << setprecision(2) << totalPrice() << " |" << endl;
+            cout.setf(ios::fixed);
+            cout.precision(2);
+            cout << totalPrice() << " |" << endl;
 
             
             cout << "| ";
@@ -91,7 +94,9 @@ namespace sdds {
             cout << "Total After Tax: ";
             cout.width(10);
             cout.setf(ios::right);
-            cout << fixed << setprecision(2)<< totalPrice() + totalTax() << " |" << endl;
+            cout.setf(ios::fixed);
+            cout.precision(2);
+            cout << totalPrice() + totalTax() << " |" << endl;
             cout.unsetf(ios::right);
             cout << "+--------------------------------------+" << endl;
         }

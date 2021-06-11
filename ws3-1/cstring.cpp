@@ -37,7 +37,7 @@ Date : 2021/06/02
                 des[count] = src[count];
 
             }
-
+            des[count] = '\0';
         }
         // Compares two C-strings 
         // returns 0 i thare the same
