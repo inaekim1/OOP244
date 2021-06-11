@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include "cstring.h"
 #include "Bill.h"
 using namespace std;
@@ -44,7 +45,7 @@ namespace sdds {
         cout.width(36);
         cout.fill(' ');
         cout.setf(ios::left);
-        if (m_items->isValid())
+        if (isValid())
         {
             cout << m_title;
         }
@@ -52,6 +53,7 @@ namespace sdds {
         {
             cout << "Invalid Bill";
         }
+       
         cout << " |" << endl;
         cout << "+----------------------+---------+-----+" << endl;
         cout << "| ";
@@ -64,7 +66,7 @@ namespace sdds {
         cout << " Price";
         cout << "   +" <<" Tax" << " |" << endl;
         cout << "+----------------------+---------+-----+" << endl;
-        cout.unsetf(ios::left);
+        
     }
     void Bill::footer()const
     {
@@ -72,38 +74,44 @@ namespace sdds {
         if (isValid())
         {
             cout << "| ";
-            cout.width(30);
-            cout.fill(' ');
-            cout.setf(ios::right);
-            cout << "Total Tax :";
 
-            cout.width(6);
+            cout.width(26);
+            cout << "Total Tax: ";
+            cout.width(10);
             cout.setf(ios::right);
-            cout << totalTax();
+            cout << fixed << setprecision(2) << totalTax();
             cout << " |" << endl;
 
             cout << "| ";
-            cout.width(24);
-            cout.setf(ios::right);
-            cout << "Total Price :";
-            cout << totalPrice() << " |" << endl;
 
-            cout << "| ";
+            cout.width(26);
+            cout << "Total Price: ";
             cout.width(10);
             cout.setf(ios::right);
-            cout << "Total After Tax:" << totalPrice() + totalTax() << " |" << endl;
+            cout << fixed << setprecision(2) << totalPrice() << " |" << endl;
 
+            
+            cout << "| ";
+            cout.width(26);
+            cout << "Total After Tax: ";
+            cout.width(10);
+            cout.setf(ios::right);
+            cout << fixed << setprecision(2)<< totalPrice() + totalTax() << " |" << endl;
+            cout.unsetf(ios::right);
+            cout << "+--------------------------------------+" << endl;
         }
         else
         {
+           
             cout << "| ";
             cout << "Invalid Bill";
-            cout.width(36);
+            cout.width(26);
             cout.fill(' ');
-            cout << " |";
+            cout << " |" << endl;
+            cout << "+--------------------------------------+" << endl;
         }
        
-        cout << "+--------------------------------------+" << endl;
+      
     }
     void Bill::setEmpty()
     {
@@ -113,7 +121,7 @@ namespace sdds {
     bool Bill::isValid()const
     {
         bool ret = false;
-        int found = -1;
+        int found = 0;
        
         if (m_title[0] != '\0' && m_items != nullptr)
         {
@@ -121,11 +129,11 @@ namespace sdds {
             {
                 if (m_items[i].isValid())
                 {
-                    found = 1;
+                    found++;
                 }
             }
         }
-        if (found == 1)
+        if (found == m_noOfItems)
         {
             ret = true;
         }
