@@ -1,3 +1,11 @@
+/* Workshop 3 part 1
+Name : Inae Kim
+Seneca ID : 132329202
+Seneca email : ikim36@myseneca.ca
+Date : 2021/06/02
+
+*/
+// I have done all the coding by myself and only copied the code that my professor provided to complete my workshops and assignments.
 #include <iostream>
 #include <iomanip>
 #include "cstring.h"
@@ -7,13 +15,7 @@ namespace sdds {
 
     double Bill::totalTax()const
     {
-        /*int count = 0; */
         double totaltax = 0.0;
-      /*  while (m_items[count].isValid())
-        {
-            totaltax += m_items[count].tax();
-            count++;
-        }*/
         for (int i = 0; i < m_noOfItems; i++)
         {
             totaltax += m_items[i].tax();
@@ -23,14 +25,7 @@ namespace sdds {
     }
     double Bill::totalPrice()const
     {
-        
         double totalprice = 0.0;
-        /*int count = 0;
-        while (m_items[count].isValid())
-        {
-            totalprice += m_items[count].price();
-            count++;
-        }*/
         for (int i = 0; i < m_noOfItems; i++)
         {
             totalprice += m_items[i].price();
