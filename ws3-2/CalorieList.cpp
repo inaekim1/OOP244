@@ -20,8 +20,8 @@ namespace sdds
        
         if (isValid())
         {
-            cout << "Daily Calorie Consumption";
-            cout.width(27);
+            cout << " Daily Calorie Consumption";
+            cout.width(26);
             cout.fill(' ');
         }
         else
@@ -34,7 +34,7 @@ namespace sdds
         cout << " |" << endl;
 
         cout << "+--------------------------------+------+------------+" << endl;
-        cout << "| " << "Food Name";
+        cout << "| " << "Food name";
         cout.width(24);
         cout.fill(' ');
         cout << " | " << "Cals" << " | ";
@@ -52,9 +52,9 @@ namespace sdds
         {
             cout << "| ";
 
-            cout.width(30);
+            cout.width(29);
             cout << "Total Calories for today: ";
-            cout.width(7);
+            cout.width(8);
             cout.fill(' ');
             cout << totalCalorie();
             cout << " | ";
@@ -66,11 +66,13 @@ namespace sdds
         else
         {
             cout << "| ";
-            cout.width(4);
+            cout.width(35);
             cout.fill(' ');
             cout << "Invalid Calorie Consumption list";
-            cout.width(20);
+            cout.setf(ios::right);
+            cout.width(17);
             cout.fill(' ');
+            cout.unsetf(ios::right);
             cout << " |" << endl;
             
         }
