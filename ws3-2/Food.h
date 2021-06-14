@@ -2,7 +2,8 @@
 Name : Inae Kim
 Seneca ID : 132329202
 Seneca email : ikim36@myseneca.ca
-Date : 2021/06/02
+Date : 2021/06/14
+Section : OOP244 NBB
 
 */
 // I have done all the coding by myself and only copied the code that my professor provided to complete my workshops and assignments.
@@ -15,9 +16,8 @@ namespace sdds
     {
         char m_foodName[30];
         int m_calNum;
-            //valid between 0 and 3000 calories (including 3000).
         int  m_timeOfConsumption;
-        //values 1, 2, 3 or 4 (see Meal time and their code)
+      
 
     public :
         void setName(const char* name);
