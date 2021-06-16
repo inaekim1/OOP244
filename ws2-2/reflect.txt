@@ -1,0 +1,12 @@
+/* Workshop 2 part 2
+Name : Inae Kim
+Seneca ID : 132329202
+Seneca email : ikim36@myseneca.ca
+Date : 2021/06/06
+Section : OOP244 NBB
+
+*/
+
+
+- This workshop was about the dynamic allocation of memory, function overloading, and use of references. In both part 1 and part 2, I implemented several functions using function overloading which is creating multiple functions with the same name but with different parameters number or type. For example, I created multiple functions called read with the same return type(bool) but different parameters, depending on their use. The first one receives the pointer of char array(employee name), second one receives a reference of an integer variable(employee number), and lastly, the third one receives a reference of a double type variable(employee's salary). So I learned how multiple functions with the same name can work together based on the function overloading feature of C++. In addition, I also learned how dynamic allocation of memory is and how it works by allocating dynamic memory for employee structure array. In dynamic allocation, I did not have to specify the size of an array to allocate while coding the program. Also, I learned that once I dynamically allocated the memory, I had to deallocate the memory by myself because it would cause a memory leak otherwise. Finally, I learned how the use of reference can replace the use of pointers in C++, which makes the whole passing process in functions more convenient.
+- An out parameter makes itself an alias for the argument which is a variable. Therefore the parameter with out keyword must use pass-by-reference when passing arguments. An in parameter is the same as  an out parameter, but in this case, it does not allow the arguments to be changed. The example of in parameters in my function is display function which receives a const reference of a structure instance as a parameter and returns nothing. This function meets the conditions for in parameter, which is to pass by reference, and its value cannot be changed.

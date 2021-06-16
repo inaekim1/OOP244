@@ -1,0 +1,9 @@
+/* Workshop 3 part 2
+Name : Inae Kim
+Seneca ID : 132329202
+Seneca email : ikim36@myseneca.ca
+Section : OOP244 NBB
+Date : 2021/06/14
+
+*/
+- This workshop was about member functions, safe empty state, and formatting the output using cout member functions. I had to declare a class, which is used to store the private data inside, and other member functions in both part 1 and 2 of the workshop. The private data cannot be accessed nor modified by the client code, but only the member functions. In this way, I could prevent the data from unwanted changes. Therefore, I had to define the display function even just to show the data, and it was confusing at first, but once I understood the concept and the importance of privacy, I got used to it. Moreover, I learned how crucial it was to make sure the members of the class stay in a safe empty state before they are assigned to certain values. For instance, while I was working on part 1, there was an error that a garbage value kept being assigned to the member variable(m_price) and passing the isValid function test. The output went wrong because of the corrupted value, and I realized that I forgot to set all the members in the empty state after I newly allocated the memory to the object. Through this experience, I could fully understand the importance of a safe empty state of the member variables. Lastly, I learned how to format my output using member functions in ostream. Before I learned this, I manually loop the process of entering spaces using for loop statement, and after I got how to use cout.width and cout.fill to enter characters that I want, and cout.setf to make it either right-justified or left-justified, the code became clearer and more readable. I confronted many difficulties while doing this workshop, but I could get over them with new features I learned.   
