@@ -166,7 +166,7 @@ namespace sdds {
             cout.fill(' ');
          
             cout << volume();
-            cout << "cc  ";
+            cout << "cc   ";
             cout << m_contentName;
         }
         return cout;
