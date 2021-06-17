@@ -1,4 +1,14 @@
- #define _CRT_SECURE_NO_WARNINGS
+/* Workshop 4 part 1
+Name : Inae Kim
+Seneca ID : 132329202
+Seneca email : ikim36@myseneca.ca
+Date : 2021/06/02
+Section : OOP244 NBB
+
+*/
+// I have done all the coding by myself and only copied the code that my professor provided to complete my workshops and assignments. 
+
+#define _CRT_SECURE_NO_WARNINGS
 #include <istream>
 #include <iomanip>
 #include "cstring.h"  // using strLen, strCpy and strCmp 
@@ -11,7 +21,7 @@ namespace sdds {
     
     Canister::Canister()
     {
-
+        setToDefault();
     }
  
     Canister::Canister(const char* contentName)
@@ -21,14 +31,21 @@ namespace sdds {
     }
     Canister::Canister(double height, double diameter, const char* contentName)
     {
-        /*
-        The smallest Canister can have a height and diameter of 10.0 by 10.0 centimetres and the largest one can be 40 by 30 respectively.*/
-        if (height >= 10.0 || height <= 40.0 || diameter >= 10.0 || diameter <= 30.0 )
+
+        setToDefault();
+        if (height >= 10.0 && height <= 40.0 && diameter >= 10.0 && diameter <= 30.0)
         {
             m_height = height;
             m_diameter = diameter;
             m_contentVolume = 0;
-            setName(contentName);
+            if (contentName != NULL)
+            {
+                setName(contentName);
+            }
+            else
+            {
+                m_contentName = nullptr;
+            }
         }
         else
         {
@@ -50,7 +67,7 @@ namespace sdds {
     {
         if (Cstr != nullptr && m_usable)
         {
-           
+            delete[] m_contentName;
             m_contentName = new char[strLen(Cstr) + 1];
             strCpy(m_contentName, Cstr);
         }
@@ -76,7 +93,7 @@ namespace sdds {
 
     Canister& Canister::setContent(const char* contentName)
     {
-        if (contentName == nullptr)
+        if (contentName == NULL)
         {
             m_usable = false;
         }
@@ -84,7 +101,7 @@ namespace sdds {
         {
             setName(contentName);
         }
-        else if(!strCmp(contentName, m_contentName))
+        else if((strCmp(contentName, m_contentName)) != 0)
         {
             m_usable = false;
         }
@@ -92,32 +109,31 @@ namespace sdds {
     }
     Canister& Canister::pour(double quantity)
     {
-        if (m_usable && quantity > 0)
+        if (quantity > 0 && quantity + volume() <= capacity())
         {
-            if (quantity + volume() <= capacity())
-            {
-                m_contentVolume += quantity;
-            }
-            else
+            m_contentVolume += quantity;
+        }
+         else
             {
                 m_usable = false;
             }
-        }
+
         return *this;
   
     }
-    Canister& Canister::pour(Canister&)
+    Canister& Canister::pour(Canister& C)
     {
-        setContent(m_contentName);
-        if (volume() > (capacity() - volume()))
+        setContent(C.m_contentName);
+        if (C.volume() > (capacity() - volume()))
         {
-            m_contentVolume -= (capacity() - volume());
+            C.m_contentVolume -= (capacity() - volume());
+            m_contentVolume = capacity();
 
         }
         else
         {
-            pour(m_contentVolume);
-            m_contentVolume = 0;
+            pour(C.m_contentVolume);
+            C.m_contentVolume = 0.0;
         }
         return *this;
     }
@@ -127,6 +143,8 @@ namespace sdds {
     }
     std::ostream& Canister::display()const
     {
+        cout.setf(ios::fixed);
+        cout.precision(1);
         cout.width(7);
         cout.fill(' ');
         cout << capacity();
@@ -136,15 +154,18 @@ namespace sdds {
         cout << m_diameter;
         cout << ") Canister";
 
-        if (m_usable)
+        if (!m_usable)
         {
-            cout << " of Unusable content, discard!" << endl;
+            cout << " of Unusable content, discard!";
+            
         }
-        else if (m_contentName != nullptr)
+        else if (m_contentName != NULL)
         {
             cout << " of ";
             cout.width(7);
             cout.fill(' ');
+         
+            cout << volume();
             cout << "cc  ";
             cout << m_contentName;
         }
