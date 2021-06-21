@@ -1,0 +1,10 @@
+/* Workshop 4 part 2
+Name : Inae Kim
+Seneca ID : 132329202
+Seneca email : ikim36@myseneca.ca
+Date : 2021/06/21
+Section : OOP244 NBB
+
+*/
+
+- In this workshop, I learned about how to use constructors and destructor in the program and references of the current object. In part 1 and part 2, I had to create constructors and a destructor for an object to instantiate it and deallocate the memory of it. I learned that I could create multiple overloaded constructors, and on the other hand, I could only create one destructor for the object, because I cannot overload it. For example, I created several Canister constructors with different parameters for each, one with no parameter, and other two of them with different number of parameters like the one having a content name as a parameter and the other with a height, diameter and content name as parameters. However, there is only one destructor for the object Canister, which is ~Canister(). In addition to this, I learned how to set std::ostream as a return value. What I could do with it was by returning cout, it can replace the cout which is needed for printing the output. For instance, printLabel function in part 2 returned cout, and its purpose was to print out a label. But instead of returning a pointer of char array, it returns cout so it can be used as printLabel() << endl without having to type cout before it. 

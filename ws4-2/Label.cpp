@@ -91,12 +91,13 @@ namespace sdds
     }
     Label::~Label()
     {
+        delete[] m_content;
         delete[] m_frame;
     }
     void Label::readLabel()
     {
-        char read[100] = {};
-        cin.getline(read, 100);
+        char read[71] = {};
+        cin.getline(read, 71);
    
 
         setContent(read);
@@ -137,10 +138,9 @@ namespace sdds
             cout.fill(m_frame[5]);
             cout << m_frame[4];
            
-
+           
         }
         
-        cout << endl;
 
         return cout;
     }
