@@ -1,0 +1,10 @@
+/* Workshop 5 part 2
+Name : Inae Kim
+Seneca ID : 132329202
+Seneca email : ikim36@myseneca.ca
+Date : 2021/06/30
+Section : OOP244 NBB
+
+*/
+
+- In this workshop, I learned how to use operator overloading and helper function to make the code more efficient and clean. In both part 1 and 2, I had to create several different functions using operator overloading . In part 1, I created functions such as operator bool(), operator int(), operator double(), operator+=, operator=, operator<<, operator-, operator+ and they were used differently with their original purpose. For instance, operator bool function was used to check the validity of the account by allowing only 5 digit numbers as the account number. This function neither received nor returned any value, but only was used to check the member variable in the class. Also I had to create helper functions in part 1 and part 2. In part 1, there were operator+ and operator+= functions. In these cases, they had return values unlike the operator overloading member functions in the class. For example, operator+ function received two const reference of Account instances and returned double value. Its purpose was to add up the double values of the Account instances which are balances and assign the sum to a double variable in the function, which would be returned. By using these techniques, I realized that I could make my code more efficient and clean by using the operators in different ways. At first it was difficult to understand the concepts of them, but once I got used to them, I could use them freely. 
