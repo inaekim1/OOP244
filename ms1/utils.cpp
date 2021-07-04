@@ -1,3 +1,22 @@
+/* Citation and Sources...
+Final Project Milestone 1
+Module: utils
+Filename: utils.cpp
+Version 1.0
+Author	Inae Kim
+Seneca ID :  132329202
+Seneca email : ikim36@myseneca.ca
+Revision History
+-----------------------------------------------------------
+Date      Reason
+2020/7/4  Preliminary release
+-----------------------------------------------------------
+I have done all the coding by myself and only copied the code
+that my professor provided to complete my workshops and assignments.
+-----------------------------------------------------------
+*/
+
+
 #define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include <cstdlib>
@@ -78,10 +97,14 @@ namespace sdds {
            if (cin.fail())
            {
                cout << "Bad integer value, try again: ";
+               cin.clear();
+               cin.ignore(1000, '\n');
            }
            else if (ch != '\n')
            {
                cout << "Enter only an integer, try again: ";
+               cin.clear();
+               cin.ignore(1000, '\n');
            }
            else if (value < min || value > max)
            {
@@ -94,11 +117,14 @@ namespace sdds {
                    cout << "[" << min << " <= value <= " << max << "]: ";
                }
            }
+         
+         /*  cin.ignore(1000, '\n');*/
            cin.clear();
-           cin.ignore(1000, '\n');
            cin >> value;
            cin.get(ch);
        }
+       cin.clear();
+      
        return value;
    }
    char* getcstr(

@@ -1,3 +1,21 @@
+/* Citation and Sources...
+Final Project Milestone 1
+Module: Time
+Filename: Time.cpp
+Version 1.0
+Author	Inae Kim
+Seneca ID :  132329202
+Seneca email : ikim36@myseneca.ca
+Revision History
+-----------------------------------------------------------
+Date      Reason
+2020/7/4  Preliminary release
+-----------------------------------------------------------
+I have done all the coding by myself and only copied the code
+that my professor provided to complete my workshops and assignments.
+-----------------------------------------------------------
+*/
+
 #include "Time.h"
 #include "utils.h"
 using namespace std;
@@ -51,6 +69,10 @@ namespace sdds {
         if (hour < 0 || ch != ':' || min < 0)
         {
             istr.setstate(ios::failbit);
+        }
+        else
+        {
+            m_min = hour * 60 + min;
         }
         
         return istr;
@@ -127,9 +149,10 @@ namespace sdds {
     }
     Time Time::operator /(unsigned int val)const
     {
-        m_min / val;
+        Time t;
+        t.m_min= m_min / val;
 
-        return *this;
+        return t;
     }
     Time::operator unsigned int()const
     {
