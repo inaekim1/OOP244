@@ -41,32 +41,35 @@ namespace sdds {
            strCat(str, m_filename);
        }
    }
-   void TextFile::setNoOfLines() // error
+   void TextFile::setNoOfLines()
    {
+       m_noOfLines = 1;
        ifstream ifst;
        ifst.open(m_filename);
        while (ifst)
        {
-           if (cin.get() == '\n')
+           if (ifst.get() == '\n')
            {
                m_noOfLines++;
            }
        }
+       ifst.close();
    }
    void TextFile::loadText() // error
    {
+           delete[] m_textLines;
+
        if (m_filename != nullptr)
        {
-           delete[] m_textLines;
            m_textLines = new Line[m_noOfLines];
            int count{};
+           string str{};
            ifstream ifst(m_filename);
            while (ifst)
            {
-               string str;
-              if (std::getline(cin, str))
+              if (getline(ifst, str))
               {
-                  strCpy(m_textLines->m_value, str.c_str());  
+                  m_textLines[count] = str.c_str();
                   count++;
               }
 
@@ -83,6 +86,7 @@ namespace sdds {
        {
            ofs << m_textLines[i].m_value;
        }
+       ofs.close();
    }
    TextFile::TextFile(unsigned pageSize)
    {
@@ -92,6 +96,7 @@ namespace sdds {
    TextFile::TextFile(const char* filename, unsigned pageSize)
    {
        setEmpty();
+       m_pageSize = pageSize;
        if (filename != nullptr)
        {
            setFilename(filename);
@@ -102,11 +107,19 @@ namespace sdds {
    }
    TextFile::TextFile(const TextFile& T)
    {
-       setEmpty();
        m_pageSize = T.m_pageSize;
-       T.saveAs(m_filename);
-       setNoOfLines();
-       loadText();
+       m_filename = nullptr;
+       m_noOfLines = 0;
+       m_pageSize = 0;
+      
+       if (T)
+       {
+           setFilename(T.name());
+           T.saveAs(m_filename);
+           setNoOfLines();
+           loadText();
+       }
+ 
    }
    TextFile& TextFile::operator=(const TextFile& T)
    {
@@ -130,19 +143,21 @@ namespace sdds {
    }
    std::ostream& TextFile::view(std::ostream& ostr)const
    {
-       ostr << m_filename << endl;
        ostr.width(strLen(m_filename));
+       ostr << m_filename << endl;
        ostr.fill('=');
        unsigned int i = 0;
        for ( i = 0; i < m_noOfLines; i++)
        {
-           ostr << m_textLines[i].m_value;
+           ostr << m_textLines[i].m_value << endl;
        }
        return ostr;
    }
    std::istream& TextFile::getFile(std::istream& istr)
    {
-       istr.getline(m_filename, '\n');
+       char fname[100]{};
+       istr >> fname;
+      setFilename(fname);
        setNoOfLines();
        loadText();
 
