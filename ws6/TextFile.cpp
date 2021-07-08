@@ -19,7 +19,11 @@ namespace sdds {
    }
    void TextFile::setEmpty()
    {
-       delete[] m_textLines;
+       for (unsigned i = 0; i < m_noOfLines; i++)
+       {
+           delete[] m_textLines[i];
+          
+       }
        m_textLines = nullptr;
        delete[] m_filename;
        m_filename = nullptr;
@@ -35,15 +39,15 @@ namespace sdds {
        }
        else
        {
-           char str[] =  "C_";
-           m_filename = new char[strLen(fname) + 1];
-           strCpy(m_filename, fname);
-           strCat(str, m_filename);
+           char temp[100] = "C_";
+           m_filename = new char[strLen(fname) + strLen(temp) + 2];
+           strCat(temp, fname);
+           strCpy(m_filename, temp);
+     
        }
    }
    void TextFile::setNoOfLines()
    {
-       m_noOfLines = 1;
        ifstream ifst;
        ifst.open(m_filename);
        while (ifst)
@@ -53,14 +57,19 @@ namespace sdds {
                m_noOfLines++;
            }
        }
+       if (m_noOfLines == 0)
+       {
+           delete[] m_filename;
+           m_filename = nullptr;
+       }
+       m_noOfLines++;
        ifst.close();
    }
    void TextFile::loadText() // error
    {
-           delete[] m_textLines;
-
        if (m_filename != nullptr)
        {
+           delete[] m_textLines;
            m_textLines = new Line[m_noOfLines];
            int count{};
            string str{};
@@ -75,6 +84,7 @@ namespace sdds {
 
            }
            m_noOfLines = count;
+           ifst.close();
        }
        
    }
@@ -84,19 +94,24 @@ namespace sdds {
        ofs.open(fileName);
        for (unsigned int i = 0; i < m_noOfLines; i++)
        {
-           ofs << m_textLines[i].m_value;
+           ofs << m_textLines[i] << endl;
        }
        ofs.close();
    }
    TextFile::TextFile(unsigned pageSize)
    {
-       setEmpty();
        m_pageSize = pageSize;
+       m_filename = nullptr;
+       m_noOfLines = 0;
+       m_textLines = nullptr;
    }
    TextFile::TextFile(const char* filename, unsigned pageSize)
    {
-       setEmpty();
        m_pageSize = pageSize;
+       m_filename = nullptr;
+       m_noOfLines = 0;
+       m_textLines = nullptr; 
+
        if (filename != nullptr)
        {
            setFilename(filename);
@@ -109,12 +124,12 @@ namespace sdds {
    {
        m_pageSize = T.m_pageSize;
        m_filename = nullptr;
+       m_textLines = nullptr;
        m_noOfLines = 0;
-       m_pageSize = 0;
-      
-       if (T)
+
+       if (T.m_filename != nullptr)
        {
-           setFilename(T.name());
+           setFilename(T.name(), true);
            T.saveAs(m_filename);
            setNoOfLines();
            loadText();
@@ -125,9 +140,12 @@ namespace sdds {
    {
        if (T && *this)
        {
-           delete[] m_textLines; // array of text?
-           delete[] this->m_filename;
-           this->m_filename = nullptr;
+                  for (unsigned i = 0; i < m_noOfLines; i++)
+       {
+               delete[] m_textLines[i];
+               m_textLines[i].m_value = nullptr;
+       }// array of text?
+           m_textLines = nullptr;
            T.saveAs(m_filename);
            setNoOfLines();
            loadText();
@@ -137,20 +155,46 @@ namespace sdds {
    }
    TextFile::~TextFile()
    {
+       for (unsigned i = 0; i < m_noOfLines; i++)
+       {
+               delete[] m_textLines[i];
+               m_textLines[i].m_value = nullptr;
+       }
        delete[] m_filename;
-       delete[] m_textLines;
+       m_filename = nullptr;
 
    }
    std::ostream& TextFile::view(std::ostream& ostr)const
    {
-       ostr.width(strLen(m_filename));
-       ostr << m_filename << endl;
-       ostr.fill('=');
-       unsigned int i = 0;
-       for ( i = 0; i < m_noOfLines; i++)
+       if (m_filename != nullptr)
        {
-           ostr << m_textLines[i].m_value << endl;
+           ostr << m_filename << endl;
+           for (int i = 0; i < strLen(m_filename); i++)
+           {
+               cout << "=";
+           }
+           cout << endl;
+
+           char ch{};
+           unsigned int i = 0;
+           for (i = 0; i < m_noOfLines; i++)
+           {
+               ostr << m_textLines[i].m_value << endl;
+               if ((i+1) % m_pageSize == 0)
+               {
+                   ostr << "Hit ENTER to continue...";
+                   cin.ignore(1000, '\n');
+                   cin.clear();
+                   while (ch != '\n')
+                   {
+                       cin.get(ch);
+                   }
+                  
+               }
+               
+           }
        }
+      
        return ostr;
    }
    std::istream& TextFile::getFile(std::istream& istr)
@@ -179,14 +223,21 @@ namespace sdds {
    const char* TextFile::operator[](unsigned index)const
    {
        char* s{};
-       if (m_textLines[index] == NULL)
-       {
-           s = nullptr;
-       }
-       else if (index > m_noOfLines)
+       if (index >= m_noOfLines)
        {
            index = index % m_noOfLines;
-           s = m_textLines[index].m_value;
+           s = new char[strLen(m_textLines[index]) + 1];
+           strCpy(s, m_textLines[index]);
+         
+       }
+       else if (m_textLines[index] != NULL)
+       {
+           s = new char[strLen(m_textLines[index]) + 1];
+           strCpy(s, m_textLines[index]);
+       }
+       else
+       {
+           s = nullptr;
        }
        return s;
    }
