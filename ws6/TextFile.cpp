@@ -1,3 +1,13 @@
+/* Workshop 6 part 1
+Name : Inae Kim
+Seneca ID : 132329202
+Seneca email : ikim36@myseneca.ca
+Date : 2021/07/08
+Section : OOP244 NBB
+
+*/
+// I have done all the coding by myself and only copied the code that my professor provided to complete my workshops and assignments. 
+// version 2 : I removed comments and added reflect.txt. Please review this one and reflection!
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -19,11 +29,7 @@ namespace sdds {
    }
    void TextFile::setEmpty()
    {
-       for (unsigned i = 0; i < m_noOfLines; i++)
-       {
-           delete[] m_textLines[i];
-          
-       }
+       delete[] m_textLines;
        m_textLines = nullptr;
        delete[] m_filename;
        m_filename = nullptr;
@@ -65,11 +71,13 @@ namespace sdds {
        m_noOfLines++;
        ifst.close();
    }
-   void TextFile::loadText() // error
+   void TextFile::loadText() 
    {
+   
        if (m_filename != nullptr)
        {
            delete[] m_textLines;
+           m_textLines = nullptr;
            m_textLines = new Line[m_noOfLines];
            int count{};
            string str{};
@@ -129,6 +137,7 @@ namespace sdds {
 
        if (T.m_filename != nullptr)
        {
+
            setFilename(T.name(), true);
            T.saveAs(m_filename);
            setNoOfLines();
@@ -140,11 +149,7 @@ namespace sdds {
    {
        if (T && *this)
        {
-                  for (unsigned i = 0; i < m_noOfLines; i++)
-       {
-               delete[] m_textLines[i];
-               m_textLines[i].m_value = nullptr;
-       }// array of text?
+           delete[] m_textLines;
            m_textLines = nullptr;
            T.saveAs(m_filename);
            setNoOfLines();
@@ -155,11 +160,8 @@ namespace sdds {
    }
    TextFile::~TextFile()
    {
-       for (unsigned i = 0; i < m_noOfLines; i++)
-       {
-               delete[] m_textLines[i];
-               m_textLines[i].m_value = nullptr;
-       }
+       delete[] m_textLines;
+       m_textLines = nullptr;
        delete[] m_filename;
        m_filename = nullptr;
 
@@ -199,7 +201,7 @@ namespace sdds {
    }
    std::istream& TextFile::getFile(std::istream& istr)
    {
-       char fname[100]{};
+       char fname[30]{};
        istr >> fname;
       setFilename(fname);
        setNoOfLines();
@@ -222,24 +224,7 @@ namespace sdds {
    }
    const char* TextFile::operator[](unsigned index)const
    {
-       char* s{};
-       if (index >= m_noOfLines)
-       {
-           index = index % m_noOfLines;
-           s = new char[strLen(m_textLines[index]) + 1];
-           strCpy(s, m_textLines[index]);
-         
-       }
-       else if (m_textLines[index] != NULL)
-       {
-           s = new char[strLen(m_textLines[index]) + 1];
-           strCpy(s, m_textLines[index]);
-       }
-       else
-       {
-           s = nullptr;
-       }
-       return s;
+       return *this ? (const char*)m_textLines[index % m_noOfLines] : nullptr;
    }
    std::ostream& operator<<(std::ostream& ostr, const TextFile& text)
    {

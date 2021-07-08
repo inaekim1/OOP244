@@ -1,8 +1,8 @@
-    /* Workshop 4 part 2
+/* Workshop 6 part 1
 Name : Inae Kim
 Seneca ID : 132329202
 Seneca email : ikim36@myseneca.ca
-Date : 2021/06/21
+Date : 2021/07/08
 Section : OOP244 NBB
 
 */

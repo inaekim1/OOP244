@@ -1,0 +1,10 @@
+/* Workshop 6 part 1
+Name : Inae Kim
+Seneca ID : 132329202
+Seneca email : ikim36@myseneca.ca
+Date : 2021/07/08
+Section : OOP244 NBB
+
+*/
+
+- In this workshop, I learned about copy constructors, copy assignment operators, and ifstream in C++. The key was to know how to implement both copy constructor and copy assignment operator, and I implemented them in part 1 as TextFile(const TextFile& T) as a copy constructor, and TextFile::operator=(const TextFile &T). The role of the copy constructor was to copy the context and filename of TextFile object to an empty object. It used various other member functions to copy the file name(add C_ as a prefix), save the copied file, the contexts and count the number of lines of the text file excluding the empty line. Also ifstream was used to open and input the context of the file. The copy assignment operator, on the other hand, worked exactly the same as the copy constructor. Since the concept of copy constructor was complicated, I had struggled much to understand it and that required me to review the class notes and lectures over and over again. Once I understood the concept, I could get through with building copy constructors in my program. In addition, the memory leak problem was also a big problem for me while working on this workshop that took me a long period of time to fix, but as I realized that I had an allocated memory that had not been deleted in the function operator[], I could approache to the solution of the problem. I noticed that I was allocating memory for char array that was not necessary for the function, and I replaced that into return statement with m_textLine of the required index along with casting. Then I simplified it more with tenary operator to make the function look clean. This workshop was overall a big challenge, but I have learned lots of materials while working on it. 
