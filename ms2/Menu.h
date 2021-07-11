@@ -13,6 +13,9 @@ namespace sdds
         virtual ~Menu();
         int& operator>>(int& Selection);
         // add safe copying logic
+        Menu(const Menu&);
+        Menu& operator=(const Menu&) = delete;
+
     };
 }
 #endif

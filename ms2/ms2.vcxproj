@@ -140,15 +140,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\ms1\Time.cpp" />
-    <ClCompile Include="..\ms1\utils.cpp" />
     <ClCompile Include="IOAble.cpp" />
     <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="menuTester.cpp" />
     <ClCompile Include="ms2Tester.cpp" />
+    <ClCompile Include="utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\ms1\utils.h" />
     <ClInclude Include="IOAble.h" />
     <ClInclude Include="Menu.h" />
+    <ClInclude Include="Time.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
