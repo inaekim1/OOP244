@@ -1,5 +1,5 @@
 /* Citation and Sources...
-Final Project Milestone 1
+Final Project Milestone 2
 Module: IOAble
 Filename: IOAble.cpp
 Version 1.0
@@ -9,7 +9,7 @@ Seneca email : ikim36@myseneca.ca
 Revision History
 -----------------------------------------------------------
 Date      Reason
-2020/7/4  Preliminary release
+2021/7/11  Preliminary release
 -----------------------------------------------------------
 I have done all the coding by myself and only copied the code
 that my professor provided to complete my workshops and assignments.
@@ -22,35 +22,17 @@ that my professor provided to complete my workshops and assignments.
 using namespace std;
 namespace sdds
 {
-    ostream& IOAble::csvWrite(std::ostream& ostr)const
-    {
-        ofstream ofst;
-
-    }
-    istream& IOAble::csvRead(std::istream& istr)
-    {
-        
-
-    }
-    ostream& IOAble::write(ostream& ostr)const
-    {
-
-    }
-    istream& IOAble::read(istream& istr)
-    {
-
-    }
     IOAble::~IOAble()
     {
 
     }
-    std::ostream& operator<<(std::ostream& ostr, const IOAble&)
+
+    std::ostream& operator<<(std::ostream& ostr, const IOAble& IO)
     {
-
-
+        return IO.write(ostr);
     }
-    std::istream& operator>>(std::istream& istr, IOAble&)
+    std::istream& operator>>(std::istream& istr, IOAble& IO)
     {
-
+        return IO.read(istr);
     }
 }
