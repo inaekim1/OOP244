@@ -1,15 +1,16 @@
 /* Citation and Sources...
-Final Project Milestone 1
+Final Project Milestone 2
 Module: utils
 Filename: utils.h
-Version 1.0
+Version 2.0
 Author	Inae Kim
 Seneca ID :  132329202
 Seneca email : ikim36@myseneca.ca
 Revision History
 -----------------------------------------------------------
 Date      Reason
-2020/7/4  Preliminary release
+2021/ 07/11 First submission
+2021/ 07/16 Second submission(fixed functions and comments)
 -----------------------------------------------------------
 I have done all the coding by myself and only copied the code
 that my professor provided to complete my workshops and assignments.

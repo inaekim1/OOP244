@@ -1,0 +1,11 @@
+/* Workshop 7 part 1
+Name : Inae Kim
+Seneca ID : 132329202
+Seneca email : ikim36@myseneca.ca
+Date : 2021/07/18
+Section : OOP244 NBB
+
+*/
+
+- This workshop was about derived classes and custom I/O operators. I needed to implement a Base class called MotorVehicle and a derived class called Truck. I implemented both the functions of MotorVehicle and Truck but the member functions in the Truck class that had the same names as those of MotorVehicle could shadow the functions in the MotorVehicle depending on which object was required in the client code. For example, there is a function called "read" in both Truck class and MotorVehicle class, and they have different functionalities. The read function in MotorVehicle class is for reading the values for the built year, license plate and the address of the current location. On the other hand, the read function in Truck class is used for reading the capacity and the current load in kilograms along with the built year, license plate and current address. The concept of inheritance was challenging to understand and utilize in the program at first, so I had a trouble working on it. For instance, when I had to implement a constructor that had to receive the member variables of the Truck and MotorVehicle all together, I had no idea what to do since the member variables of the MotorVehicle was private and inaccessible to Truck class. However, as I read through the lecture notes, I realized what to do for that, which was to use parametized constructor. I could learn how inheritance works and how to use this concept to the code by this workshop. 
+

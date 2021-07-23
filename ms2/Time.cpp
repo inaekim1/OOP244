@@ -1,16 +1,15 @@
 /* Citation and Sources...
-Final Project Milestone 2
+Final Project Milestone 1
 Module: Time
 Filename: Time.cpp
-Version 2.0
+Version 1.0
 Author	Inae Kim
 Seneca ID :  132329202
 Seneca email : ikim36@myseneca.ca
 Revision History
 -----------------------------------------------------------
 Date      Reason
-2021/ 07/11 First submission
-2021/ 07/16 Second submission(fixed functions and comments)
+2020/7/4  Preliminary release
 -----------------------------------------------------------
 I have done all the coding by myself and only copied the code
 that my professor provided to complete my workshops and assignments.
@@ -20,7 +19,8 @@ that my professor provided to complete my workshops and assignments.
 #include "Time.h"
 #include "utils.h"
 using namespace std;
-namespace sdds {
+namespace sdds
+{
     Time& Time::setToNow()
     {
         m_min = getTime();
@@ -57,7 +57,7 @@ namespace sdds {
         {
             ostr << min;
         }
-      
+
 
         return ostr;
     }
@@ -75,7 +75,7 @@ namespace sdds {
         {
             m_min = hour * 60 + min;
         }
-        
+
         return istr;
     }
     Time& Time::operator-=(const Time& D)
@@ -99,15 +99,15 @@ namespace sdds {
         {
             if (hour2 > 12 && hour2 < 24)
             {
-                t.m_min = (m_min+1440) - D.m_min;
+                t.m_min = (m_min + 1440) - D.m_min;
 
             }
-            else if (hour2 > 24 && hour2 < 48 )
+            else if (hour2 > 24 && hour2 < 48)
             {
                 t.m_min = (m_min + 2880) - D.m_min;
             }
         }
-         return t;
+        return t;
 
     }
     Time& Time::operator+=(const Time& D)
@@ -144,14 +144,14 @@ namespace sdds {
     Time Time::operator *(unsigned int val)const
     {
         Time t;
-        t.m_min = m_min* val;
+        t.m_min = m_min * val;
 
         return t;
     }
     Time Time::operator /(unsigned int val)const
     {
         Time t;
-        t.m_min= m_min / val;
+        t.m_min = m_min / val;
 
         return t;
     }
